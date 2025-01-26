@@ -28,7 +28,8 @@ def plot_model_history(model_history):
     axs[0].set_title('Model Accuracy')
     axs[0].set_ylabel('Accuracy')
     axs[0].set_xlabel('Epoch')
-    axs[0].set_xticks(np.arange(1,len(model_history.history['accuracy'])+1),len(model_history.history['accuracy'])/10)
+    # axs[0].set_xticks(np.arange(1,len(model_history.history['accuracy'])+1),len(model_history.history['accuracy'])/10)
+    axs[0].set_xticks(np.arange(1, len(model_history.history['accuracy']) + 1, len(model_history.history['accuracy']) // 10))
     axs[0].legend(['train', 'val'], loc='best')
     # summarize history for loss
     axs[1].plot(range(1,len(model_history.history['loss'])+1),model_history.history['loss'])
@@ -36,7 +37,8 @@ def plot_model_history(model_history):
     axs[1].set_title('Model Loss')
     axs[1].set_ylabel('Loss')
     axs[1].set_xlabel('Epoch')
-    axs[1].set_xticks(np.arange(1,len(model_history.history['loss'])+1),len(model_history.history['loss'])/10)
+    # axs[1].set_xticks(np.arange(1,len(model_history.history['loss'])+1),len(model_history.history['loss'])/10)
+    axs[1].set_xticks(np.arange(1, len(model_history.history['loss']) + 1, len(model_history.history['loss']) // 10))
     axs[1].legend(['train', 'val'], loc='best')
     fig.savefig('plot.png')
     plt.show()
@@ -48,7 +50,8 @@ val_dir = '/content/Emotion-detection/src/data/test'
 num_train = 28709
 num_val = 7178
 batch_size = 64
-num_epoch = 50
+# num_epoch = 50
+num_epoch = 10
 
 train_datagen = ImageDataGenerator(rescale=1./255)
 val_datagen = ImageDataGenerator(rescale=1./255)
@@ -98,7 +101,7 @@ if mode == "train":
             validation_data=validation_generator,
             validation_steps=num_val // batch_size)
     plot_model_history(model_info)
-    model.save_weights('model.h5')
+    model.save_weights('fer2013_model.h5')
 
 # emotions will be displayed on your face from the webcam feed
 elif mode == "display":
