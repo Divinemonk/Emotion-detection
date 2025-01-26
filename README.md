@@ -45,7 +45,8 @@ python emotions.py --mode display
 
 * This implementation by default detects emotions on all faces in the webcam feed. With a simple 4-layer CNN, the test accuracy reached 63.2% in 50 epochs.
 
-![Accuracy plot](imgs/accuracy.png)
+![Accuracy plot](https://github.com/user-attachments/assets/66c9df2a-5c0e-4ed4-afe5-7f19a50a238a)
+
 
 ## Data Preparation (optional)
 
