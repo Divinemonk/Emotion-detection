@@ -42,8 +42,8 @@ def plot_model_history(model_history):
     plt.show()
 
 # Define data generators
-train_dir = 'data/train'
-val_dir = 'data/test'
+train_dir = '/content/Emotion-detection/src/data/train'
+val_dir = '/content/Emotion-detection/src/data/test'
 
 num_train = 28709
 num_val = 7178
@@ -88,8 +88,10 @@ model.add(Dense(7, activation='softmax'))
 
 # If you want to train the same model or try other models, go for this
 if mode == "train":
-    model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.0001, decay=1e-6),metrics=['accuracy'])
-    model_info = model.fit_generator(
+    # model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.0001, decay=1e-6),metrics=['accuracy'])
+    model.compile(loss='categorical_crossentropy',optimizer=Adam(learning_rate=0.0001),metrics=['accuracy'])
+    # model_info = model.fit_generator(
+    model_info = model.fit(
             train_generator,
             steps_per_epoch=num_train // batch_size,
             epochs=num_epoch,
